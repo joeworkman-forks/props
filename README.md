@@ -1,4 +1,0 @@
-props
-=====
-
-Manage Settings
