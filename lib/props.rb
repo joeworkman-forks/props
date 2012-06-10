@@ -6,6 +6,7 @@ require 'pp'
 require 'logger'
 require 'optparse'
 require 'fileutils'
+require 'erb'
 
 
 
@@ -37,7 +38,7 @@ end # class Env
 
 class Props
 
-  VERSION = '0.1.0'
+  VERSION = '0.2.0'
 
   attr_reader :path
   attr_reader :parent
@@ -54,19 +55,39 @@ class Props
     pp h    # todo: add debug flag (turn off for default)
     Props.new( h, path, parent )
   end
+  
+  ### todo: use TOP_LEVEL_BINDING for binding default?
+  def self.load_file_with_erb( path, binding, parent=nil )  # run through erb first
+    text = ERB.new( File.read( path ) ).result( binding )
+    h = YAML.load( text )
+    puts "dump of >#{path}<:"
+    pp h    # todo: add debug flag (turn off for default)
+    Props.new( h, path, parent )
+  end
     
-  def [](key)  get( key );  end
     
   def fetch(key, default)
     value = get( key )
     value.nil? ? default : value
   end
-
-private
-  def get( key )
-    value = @hash[ key.to_s ]
-    # if not found try lookup in parent hash
-    (value.nil? && parent) ? parent[key] : value
+  
+  def fetch_from_section(section, key, default)
+    value = get_from_section( section, key )
+    value.nil? ? default : value
   end
-    
-end # class props
+
+  def [](key)  get( key );  end
+
+  def get( key )
+    value = @hash.fetch( key.to_s, nil )
+    # if not found try lookup in parent hash
+    (value.nil? && parent) ? parent.get(key) : value
+  end
+
+  def get_from_section( section, key )
+    value = @hash.fetch( section.to_s, {} ).fetch( key.to_s, nil )
+    # if not found try lookup in parent hash
+    (value.nil? && parent) ? parent.get_from_section(section,key) : value
+  end
+
+end # class Props

@@ -5,7 +5,7 @@ Hoe.spec 'props' do
   
   self.version = Props::VERSION
   
-  self.summary = 'props - Manage Settings'
+  self.summary = 'props - Manage Settings Hierachies (Commandline, User, Home, Defaults, etc.)'
   self.description = summary
 
   self.urls    = ['http://geraldb.github.com/props']
