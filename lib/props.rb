@@ -3,8 +3,6 @@
 
 require 'yaml'
 require 'pp'
-require 'logger'
-require 'optparse'
 require 'fileutils'
 require 'erb'
 
@@ -28,8 +26,10 @@ class Env
                 end
               end
             end
-      
-    puts "env home=>#{path}<"
+     
+    # todo: use logger - how?
+    ## puts "env home=>#{path}<"
+    
     path
   end
 
@@ -38,7 +38,7 @@ end # class Env
 
 class Props
 
-  VERSION = '0.2.0'
+  VERSION = '1.0.0'
 
   attr_reader :path
   attr_reader :parent
@@ -51,8 +51,6 @@ class Props
     
   def self.load_file( path, parent=nil )
     h = YAML.load_file( path )
-    puts "dump of >#{path}<:"
-    pp h    # todo: add debug flag (turn off for default)
     Props.new( h, path, parent )
   end
   
@@ -60,11 +58,14 @@ class Props
   def self.load_file_with_erb( path, binding, parent=nil )  # run through erb first
     text = ERB.new( File.read( path ) ).result( binding )
     h = YAML.load( text )
-    puts "dump of >#{path}<:"
-    pp h    # todo: add debug flag (turn off for default)
     Props.new( h, path, parent )
   end
     
+  def dump   # for debugging
+    puts "dump of >#{@path}<:"
+    pp @hash
+  end
+
     
   def fetch(key, default)
     value = get( key )
