@@ -1,5 +1,7 @@
-History.markdown
+History.md
 Manifest.txt
-README.markdown
+README.md
 Rakefile
 lib/props.rb
+test/helper.rb
+test/test_ini.rb

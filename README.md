@@ -69,11 +69,11 @@ Just install the gem:
 
 ## Real World Usage
 
-The [`slideshow`](http://slideshow.rubyforge.org) gem (also known as Slide Show (S9))
+The [`slideshow`](http://slideshow-s9.github.io) gem (also known as Slide Show (S9))
 that lets you create slide shows
 and author slides in plain text using a wiki-style markup language that's easy-to-write and easy-to-read.
 
-The [`markdown`](http://geraldb.github.com/markdown) gem that lets you use your markdown library
+The [`markdown`](https://github.com/rubylibs/markdown) gem that lets you use your markdown library
 of choice.
 
 ## Alternatives
