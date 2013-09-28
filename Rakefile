@@ -1,10 +1,10 @@
 require 'hoe'
-require './lib/props.rb'
+require './lib/props/version.rb'
 
 Hoe.spec 'props' do
 
-  self.version = Props::VERSION
-  
+  self.version = ConfUtils::VERSION
+
   self.summary = 'props - Manage Settings Hierachies (Commandline, User, Home, Defaults, etc.)'
   self.description = summary
 

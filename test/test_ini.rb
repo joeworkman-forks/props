@@ -6,8 +6,8 @@
 
 require 'helper'
 
-class TestIni < MiniTest::Unit::TestCase
 
+class TestIni < MiniTest::Unit::TestCase
 
   def test_load
 
@@ -36,15 +36,15 @@ EOS
     hash = INI.load( text )
     pp hash
 
-    assert( hash['key1'] == 'hello' )
-    assert( hash['key2'] == 'hi!' )
-    assert( hash['section1']['key3'] == 'salut' )
-    assert( hash['section2']['key4'] == 'hola' )
-    assert( hash['section2']['blank'] == '' )
-    assert( hash['section2']['blank2'] == '' )
-    assert( hash['http://example.com']['title'] == 'A rose is a rose is a rose, eh?' )
-    assert( hash['http://example.com']['title2'] == 'A rose is a rose is a rose, eh?' )
-    assert( hash['http://example.com']['title3'] == 'A rose is a rose is a rose, eh?' )
+    assert_equal( 'hello', hash['key1'] )
+    assert_equal( 'hi!',   hash['key2'] )
+    assert_equal( 'salut', hash['section1']['key3'] )
+    assert_equal( 'hola',  hash['section2']['key4'] )
+    assert_equal( '',      hash['section2']['blank'] )
+    assert_equal( '',      hash['section2']['blank2'] )
+    assert_equal( 'A rose is a rose is a rose, eh?', hash['http://example.com']['title'] )
+    assert_equal( 'A rose is a rose is a rose, eh?', hash['http://example.com']['title2'] )
+    assert_equal( 'A rose is a rose is a rose, eh?', hash['http://example.com']['title3'] )
   end
 
 end
