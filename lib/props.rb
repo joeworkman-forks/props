@@ -49,4 +49,4 @@ module ConfUtils
 end  # module ConfUtils
 
 
-puts ConfUtils.banner    # say hello
+puts ConfUtils.banner   if $DEBUG    # say hello
