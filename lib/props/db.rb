@@ -16,7 +16,8 @@ require 'props/db/deleter'
 module ConfDb
 
   def self.banner
-    "confdb #{ConfUtils::VERSION} on Ruby #{RUBY_VERSION} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
+    # todo: add RUBY_PATCHLEVEL or RUBY_PATCH_LEVEL??
+    "confdb/#{ConfUtils::VERSION} on Ruby #{RUBY_VERSION} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
   end
 
   def self.create
@@ -37,5 +38,5 @@ module ConfDb
 end # module ConfDb
 
 
-# say hello
-puts ConfDb.banner
+
+puts ConfDb.banner    if $DEBUG    # say hello

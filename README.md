@@ -1,8 +1,10 @@
 # `props` -  Manage Settings Hierachies (Commandline, User, Home, Defaults, etc.)
 
-## Description
+* home  :: [github.com/rubylibs/props](https://github.com/rubylibs/props)
+* bugs  :: [github.com/rubylibs/props/issues](https://github.com/rubylibs/props/issues)
+* gem   :: [rubygems.org/gems/props](https://rubygems.org/gems/props)
+* rdoc  :: [rubydoc.info/gems/props](http://rubydoc.info/gems/props)
 
-TBD
 
 ## Usage
 
@@ -67,6 +69,7 @@ Just install the gem:
     $ gem install props
 
 
+
 ## Real World Usage
 
 The [`slideshow`](http://slideshow-s9.github.io) gem (also known as Slide Show (S9))
@@ -76,9 +79,19 @@ and author slides in plain text using a wiki-style markup language that's easy-t
 The [`markdown`](https://github.com/rubylibs/markdown) gem that lets you use your markdown library
 of choice.
 
+
 ## Alternatives
 
+### Config / Settings
+
 * [`configtoolkit`](http://configtoolkit.rubyforge.org) gem
+
+### Environment / Env
+
+* [`env`](https://github.com/postmodern/env) gem
+
+### Ini
+
 
 ## License
 

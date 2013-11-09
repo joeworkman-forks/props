@@ -37,7 +37,8 @@ end  # module INI
 module ConfUtils
 
   def self.banner
-    "props #{VERSION} on Ruby #{RUBY_VERSION} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
+    # todo: add RUBY_PATCHLEVEL or RUBY_PATCH_LEVEL??
+    "props/#{VERSION} on Ruby #{RUBY_VERSION} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
   end
 
 =begin
