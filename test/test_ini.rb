@@ -1,8 +1,3 @@
-###
-#  to run use
-#     ruby -I ./lib -I ./test test/test_ini.rb
-#  or better
-#     rake test
 
 require 'helper'
 
@@ -36,15 +31,15 @@ EOS
     hash = INI.load( text )
     pp hash
 
-    assert_equal( 'hello', hash['key1'] )
-    assert_equal( 'hi!',   hash['key2'] )
-    assert_equal( 'salut', hash['section1']['key3'] )
-    assert_equal( 'hola',  hash['section2']['key4'] )
-    assert_equal( '',      hash['section2']['blank'] )
-    assert_equal( '',      hash['section2']['blank2'] )
-    assert_equal( 'A rose is a rose is a rose, eh?', hash['http://example.com']['title'] )
-    assert_equal( 'A rose is a rose is a rose, eh?', hash['http://example.com']['title2'] )
-    assert_equal( 'A rose is a rose is a rose, eh?', hash['http://example.com']['title3'] )
+    assert_equal 'hello', hash['key1']
+    assert_equal 'hi!',   hash['key2']
+    assert_equal 'salut', hash['section1']['key3']
+    assert_equal 'hola',  hash['section2']['key4']
+    assert_equal '',      hash['section2']['blank']
+    assert_equal '',      hash['section2']['blank2']
+    assert_equal 'A rose is a rose is a rose, eh?', hash['http://example.com']['title']
+    assert_equal 'A rose is a rose is a rose, eh?', hash['http://example.com']['title2']
+    assert_equal 'A rose is a rose is a rose, eh?', hash['http://example.com']['title3']
   end
 
 end

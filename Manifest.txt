@@ -1,10 +1,9 @@
-History.md
+HISTORY.md
 Manifest.txt
 README.md
 Rakefile
 lib/props.rb
 lib/props/db.rb
-lib/props/db/deleter.rb
 lib/props/db/models.rb
 lib/props/db/schema.rb
 lib/props/env.rb

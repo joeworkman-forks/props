@@ -8,9 +8,8 @@ require 'active_record'   ## todo: add sqlite3? etc.
 
 # our own code
 
-require 'props/db/models'
 require 'props/db/schema'
-require 'props/db/deleter'
+require 'props/db/models'
 
 
 module ConfDb
@@ -24,19 +23,23 @@ module ConfDb
     CreateDb.new.up
   end
 
+
   # delete ALL records (use with care!)
   def self.delete!
     puts '*** deleting props table records/data...'
-    Deleter.new.run
+    Model::Prop.delete_all
   end # method delete!
 
-  def self.stats
-    # to be done
-  end
+##  def self.stats   ## remove ? -- duplicate - use tables - why?? why not????
+##    puts "#{Model::Prop} props"
+##  end
 
+  def self.tables
+    puts "#{Model::Prop} props"
+  end
 
 end # module ConfDb
 
 
 
-puts ConfDb.banner    if $DEBUG    # say hello
+puts ConfDb.banner    # say hello

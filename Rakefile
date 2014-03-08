@@ -15,7 +15,7 @@ Hoe.spec 'props' do
 
   # switch extension to .markdown for gihub formatting
   self.readme_file  = 'README.md'
-  self.history_file = 'History.md'
+  self.history_file = 'HISTORY.md'
 
   self.licenses = ['Public Domain']
 
