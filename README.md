@@ -8,9 +8,11 @@
 
 ## Usage
 
+### Props
+
 Example:
 
-```
+~~~
 class Config
 
   DEFAULTS = { 'libs' => [ 'kramdown' ],
@@ -59,7 +61,99 @@ class Config
   ...
   
 end # class Config
-```
+~~~
+
+
+### Environment
+
+Example:
+
+~~~
+>> Env.home
+# => '/home/gerald'
+~~~
+
+Backstage the `Env.home` code looks something like:
+
+~~~
+path = if( ENV['HOME'] || ENV['USERPROFILE'] )
+         ENV['HOME'] || ENV['USERPROFILE']
+       elsif( ENV['HOMEDRIVE'] && ENV['HOMEPATH'] )
+         "#{ENV['HOMEDRIVE']}#{ENV['HOMEPATH']}"
+       else
+         begin
+            File.expand_path('~')
+         rescue
+            if File::ALT_SEPARATOR
+               'C:/'
+            else
+               '/'
+            end
+         end
+       end
+~~~
+
+
+`Env.path` returns `ENV[ 'PATH' ]` - splits all path entries
+ w/ file separator (e.g. `;` or `:`) and returns string array
+
+~~~
+>> Env.path
+# => ['/usr/local/sbin',
+      '/usr/local/bin',
+      '/usr/sbin',
+      ...
+     ]
+~~~
+
+
+### INI
+
+Example:
+
+~~~
+config_path = './ruby.ini'
+~~~
+
+Opt 1) `INI.load` - load from string. Example:
+
+~~~
+text   = File.read( config_path )
+config = INI.load( text )
+~~~
+
+Opt 2) `INI.load_file` - load from file (shortcut). Example:
+
+~~~
+config = INI.load_file( config_path )
+~~~
+
+
+
+### DB - Config Database / Schema / Model
+
+
+Example:
+
+~~~
+require 'props/db'    # include database support
+
+ConfDb.create    # build schema / tables (props)
+
+Prop.create!( key: 'db.schema.version', '1.0.0' )
+
+puts "Props:"
+Prop.order( 'created_at asc' ).all.each do |prop|
+  puts "  #{prop.key} / #{prop.value} | #{prop.created_at}"
+end
+~~~
+
+More examples:
+
+~~~
+ConfDb.tables    # dump stats to console
+ConfDb.delete!   # delete all records
+~~~
 
 
 ## Install
@@ -76,8 +170,12 @@ The [`slideshow`](http://slideshow-s9.github.io) gem (also known as Slide Show (
 that lets you create slide shows
 and author slides in plain text using a wiki-style markup language that's easy-to-write and easy-to-read.
 
+The [`pluto`](http://feedreader.github.io) gem 
+that lets you auto-build web pages from web feeds.
+
 The [`markdown`](https://github.com/rubylibs/markdown) gem that lets you use your markdown library
 of choice.
+
 
 
 ## Alternatives
