@@ -42,4 +42,4 @@ end # module ConfDb
 
 
 
-puts ConfDb.banner    # say hello
+puts ConfDb.banner if $DEBUG   # say hello
